@@ -5,9 +5,9 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import BillingList from "../Billing/BillingList";
 
-const Registration = () => {
+const Login = () => {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+
   const [password, setPassword] = useState("");
   const {
     register,
@@ -21,11 +21,10 @@ const Registration = () => {
 
   const onSubmit = (data) => {
     data.username = username;
-    data.email = email;
     data.password = password;
     reset();
     axios
-      .post("http://localhost:5000/api/registration", data)
+      .post("http://localhost:5000/api/login", data)
       .then((response) => {
         window.alert("Successfully Registered", "Successfully Registered");
         navigate("/billingList");
@@ -38,7 +37,6 @@ const Registration = () => {
       });
     // <Navigate to="/billingList" replace={true} />;
   };
-
   // style=====
   const heroText = {
     textAlign: "center",
@@ -48,10 +46,9 @@ const Registration = () => {
   const input = {
     my: 2,
   };
-  // ======
   return (
     <div>
-      <Typography sx={{ ...heroText }}>Please Register</Typography>
+      <h1>Please Login here</h1>
       <Container>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField
@@ -67,16 +64,6 @@ const Registration = () => {
             size="small"
             variant="outlined"
             sx={{ ...input }}
-            {...register("email", { required: true })}
-            fullWidth
-            label="Your Email "
-            autoFocus
-          />
-          <br />
-          <TextField
-            size="small"
-            variant="outlined"
-            sx={{ ...input }}
             {...register("password", { required: true })}
             fullWidth
             label="Your Password"
@@ -86,10 +73,12 @@ const Registration = () => {
 
           {errors.exampleRequired && <span>This field is required</span>}
 
-          <Button variant="contained">Register</Button>
-          <Link style={{ textDecoration: "none" }} to="/login">
+          <Button variant="contained" type="submit">
+            Login
+          </Button>
+          <Link style={{ textDecoration: "none" }} to="/">
             {" "}
-            <Button type="submit">Already registered? Login Here</Button>
+            <Button>New User? Register Here</Button>
           </Link>
         </form>
       </Container>
@@ -98,4 +87,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;
