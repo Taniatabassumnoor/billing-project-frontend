@@ -13,7 +13,7 @@ const UpdateBilling = () => {
   const { id } = useParams();
   const [updateBillings, setUpdateBillings] = useState({});
   const loadData = () => {
-    fetch("http://localhost:5000/api/billing-list")
+    fetch("https://bloc-inukshuk-13379.herokuapp.com/api/billing-list")
       .then((res) => res.json())
       .then((data) => {
         setUpdateBillings(data);
@@ -46,7 +46,7 @@ const UpdateBilling = () => {
     updatedData.email = updatedPaidAmount;
   };
   const handleUpdate = async (e) => {
-    // const url = `http://localhost:5000/api/billing-list/${id}`;
+    // const url = `https://bloc-inukshuk-13379.herokuapp.com/api/billing-list/${id}`;
     // await fetch(url, {
     //   method: "PUT",
     //   headers: {

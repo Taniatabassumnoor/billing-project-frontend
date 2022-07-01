@@ -25,7 +25,7 @@ const Registration = () => {
     data.password = password;
     reset();
     axios
-      .post("http://localhost:5000/api/registration", data)
+      .post("https://bloc-inukshuk-13379.herokuapp.com/api/registration", data)
       .then((response) => {
         window.alert("Successfully Registered", "Successfully Registered");
         navigate("/billingList");

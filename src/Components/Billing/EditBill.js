@@ -7,9 +7,11 @@ const EditBill = ({ id }) => {
   const [bill, setBill] = useState({});
 
   useEffect(() => {
-    axios.put(`http://localhost:5000/api/billing-list/${id}`).then((res) => {
-      setBill(res.data);
-    });
+    axios
+      .put(`https://bloc-inukshuk-13379.herokuapp.com/api/billing-list/${id}`)
+      .then((res) => {
+        setBill(res.data);
+      });
   }, [id]);
   return (
     <>

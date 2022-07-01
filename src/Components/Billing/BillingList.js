@@ -55,7 +55,7 @@ const BillingList = () => {
   //   setPage(value - 1);
   // };
   const loadData = () => {
-    fetch("http://localhost:5000/api/billing-list")
+    fetch("https://bloc-inukshuk-13379.herokuapp.com/api/billing-list")
       .then((res) => res.json())
       .then((data) => {
         // setCount(Math.ceil(data.count / limit));
@@ -69,7 +69,9 @@ const BillingList = () => {
   const handleDelete = async (id) => {
     const proceed = window.confirm("Are you sure, you want to delete?");
     if (proceed) {
-      await axios.delete(`http://localhost:5000/api/billing-list/${id}`);
+      await axios.delete(
+        `https://bloc-inukshuk-13379.herokuapp.com/api/billing-list/${id}`
+      );
       loadData();
     }
   };

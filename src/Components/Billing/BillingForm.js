@@ -45,13 +45,15 @@ const BillingForm = ({
       // to imediate show on ui
       setBillings([data, ...billings]);
       // then posting to the server
-      axios.post("http://localhost:5000/api/add-billing", data).then((res) => {
-        if (res.data.acknowledged) {
-          reset();
-        }
-        setIsAdding(!isAdding);
-        setOpen(false);
-      });
+      axios
+        .post("https://bloc-inukshuk-13379.herokuapp.com/api/add-billing", data)
+        .then((res) => {
+          if (res.data.acknowledged) {
+            reset();
+          }
+          setIsAdding(!isAdding);
+          setOpen(false);
+        });
     } else {
       // put code
       console.log("yeaaaaaa! here u can put");
